@@ -58,4 +58,13 @@ class Cliente:
         self.barberia.entrar_barberia()
         self.barberia.salir_barberia()
 
-        
+class Barbero:
+    def __init__(self,barberia):
+        self.barberia = barberia
+
+    def run(self):
+        while True:
+            self.barberia.esperar_nuevo_cliente()
+
+            
+
