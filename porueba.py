@@ -14,6 +14,11 @@ class Barberia:
         self.barbero_dur= True #variable para saber si el barbero esta durmiendo o no
 
     def cortar_pelo(self):
+        print("El barbero esta cortando el pelo...")
+        time.sleep(random.randint(1,5)) #tiempo que tarda en cortar el pelo
+        print("El barbero termino de cortar el pelo")
+
+    def esperar_cliente(self):
 
 
 
