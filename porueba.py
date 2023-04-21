@@ -29,7 +29,22 @@ class Barberia:
             self.cortar_pelo() #el barbero corta el pelo
 
     def nuevo_cliente(self, nombre_cliente):
-        
+        print(f'El cliente {nombre_cliente} llego a la barberia')
+        self.mutex.acquire() #el cliente adquiere el mutex para que no se pueda acceder a la barberia
+        if self.clientes_en_silla < self.numero_sillas: #si hay sillas disponibles
+            self.clientes_en_silla+=1 #el cliente se sienta en la silla
+            if self.barbero_dur:
+                self.barbero_dur = False
+                self.barbero.release() #el cliente libera el semaforo del barbero para que este deje de dormir
+            self.mutex.release() #el cliente libera el mutex para que otro cliente pueda entrar a la barberia
+            self.cliente.acquire() #el cliente espera a que el barbero lo atienda, el acquire se usa que el semaforo se ponga en 0
+            print(f'El cliente {nombre_cliente} se esta cortando el pelo')
+        else: #si no hay sillas disponibles
+            print(f'El cliente {nombre_cliente} se fue porque no habia sillas disponibles')
+            self.mutex.release() #el cliente libera el mutex para que otro cliente pueda entrar a la barberia
+
+            
+
 
 
 
