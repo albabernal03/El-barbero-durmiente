@@ -66,5 +66,18 @@ class Barbero:
         while True:
             self.barberia.esperar_nuevo_cliente()
 
-            
+def main():
+    barberia = Barberia(3)
+    barbero = Barbero(barberia)
+    barbero.start()
+
+    for i in range(10):
+        cliente = Cliente(barberia)
+        cliente.start()
+
+if __name__ == "__main__":
+    main()
+    
+
+
 
