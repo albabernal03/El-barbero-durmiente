@@ -50,4 +50,12 @@ class Barberia:
         self.num_sillas += 1
         self.mutex.release()
 
-def cliente(barberia):
+class Cliente:
+    def __init__(self,barberia):
+        self.barberia = barberia
+
+    def run(self):
+        self.barberia.entrar_barberia()
+        self.barberia.salir_barberia()
+
+        
