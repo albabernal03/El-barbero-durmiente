@@ -27,7 +27,11 @@ class Barberia:
             self.mutex.release() #el barbero libera el mutex para que otro cliente pueda entrar a la barberia
             self.cliente.release() #el barbero libera el semaforo del cliente para que este pueda salir de la barberia
             self.cortar_pelo() #el barbero corta el pelo
-            
+
+    def nuevo_cliente(self, nombre_cliente):
+        
+
+
 
 
 
