@@ -60,7 +60,8 @@ class Barbero(threading.Thread): #clase barbero, de tipo thread
     def run(self): #metodo run, que se ejecuta cuando se llama al metodo start, esto se usa para que el barbero entre a la barberia
         self.barberia.esperar_cliente()
 
-        
+def menu():
+
 
 
 
