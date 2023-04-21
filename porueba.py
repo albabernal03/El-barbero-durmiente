@@ -20,5 +20,34 @@ class Barberia:
         self.barbero.release() #libera al barbero para que pueda atender a otro cliente
 
     def esperar_nuevo_cliente(self):
-        print("El barbero esta durmiendo")
+        print("El barbero esta durmiendo...")
         self.cliente.acquire() #el acquires es para que el barbero no atienda a mas de 1 cliente a la vez
+        print("El barbero esta atendiendo a un cliente")
+        self.cortar_pelo() #llama a la funcion cortar_pelo
+
+    def entrar_barberia(self):
+        self.mutex.acquire()
+
+        if self.barbero_dormido:
+            self.barbero_dormido = False
+            self.cliente.release()
+            self.mutex.release()
+            self.barbero.acquire()
+        else:
+            if self.num_sillas > 0:
+                self.num_sillas -= 1
+                self.cliente.release()
+                self.mutex.release()
+                self.barbero.acquire()
+            else:
+                self.mutex.release()
+                print("No hay sillas disponibles, el cliente se va")
+                time.sleep(1)
+                self.entrar_barberia()
+
+    def salir_barberia(self):
+        self.mutex.acquire()
+        self.num_sillas += 1
+        self.mutex.release()
+
+def cliente(barberia):
