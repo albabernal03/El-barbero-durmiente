@@ -13,6 +13,8 @@ class Barberia:
         self.barbero= threading.Semaphore(0) #semaforo para el barbero, el semaforo es para que el barbero espere a que el cliente se siente en la silla
         self.barbero_dur= True #variable para saber si el barbero esta durmiendo o no
 
+    def cortar_pelo(self):
+
 
 
 
