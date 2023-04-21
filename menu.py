@@ -1,4 +1,4 @@
-from Barberia import *
+from barberia import *
 from Barbero import *
 from Cliente import *
 
