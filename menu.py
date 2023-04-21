@@ -1,6 +1,6 @@
 from barberia import *
-from Barbero import *
-from Cliente import *
+from barbero import *
+from cliente import *
 
 def iniciar():
     numero_sillas = int(input("Ingrese el numero de sillas disponibles en la barberia: "))
