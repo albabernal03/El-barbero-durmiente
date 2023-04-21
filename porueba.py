@@ -19,6 +19,15 @@ class Barberia:
         print("El barbero termino de cortar el pelo")
 
     def esperar_cliente(self):
+        print("El barbero esta durmiendo")
+        while True:
+            self.barbero.acquire() #el barbero espera a que el cliente se siente en la silla, el acquire se usa que el semaforo se ponga en 0
+            self.mutex.acquire() #el barbero adquiere el mutex para que no se pueda acceder a la barberia
+            self.clientes_en_silla-=1 #el barbero atiende al cliente, por lo que hay un cliente menos en la barberia
+            self.mutex.release() #el barbero libera el mutex para que otro cliente pueda entrar a la barberia
+            self.cliente.release() #el barbero libera el semaforo del cliente para que este pueda salir de la barberia
+            self.cortar_pelo() #el barbero corta el pelo
+            
 
 
 
