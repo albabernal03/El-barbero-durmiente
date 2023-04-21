@@ -6,6 +6,6 @@ import random
 
 
 class Barberia:
-    def __init__()
+    def __init__(self,num_sillas)
 
 
